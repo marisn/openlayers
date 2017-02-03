@@ -69,10 +69,12 @@ ol.Tile.prototype.getImage = function() {};
 
 /**
  * @return {string} Key.
+ * @api
  */
 ol.Tile.prototype.getKey = function() {
   return this.key + '/' + this.tileCoord;
 };
+
 
 /**
  * Get the interim tile most suitable for rendering using the chain of interim
