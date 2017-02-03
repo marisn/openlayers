@@ -75,7 +75,26 @@ Progress.prototype.hide = function() {
   }
 };
 
+/**
+ * Show message when all tiles are done
+ * @param {Element} el The target element.
+ * @constructor
+ */
+function Done(el) {
+  this.el = el;
+}
+
+Done.prototype.update = function(map) {
+  if (map.hasAllTilesDone()) {
+    this.el.textContent = 'Tiles are complete.';
+  } else {
+    this.el.textContent = 'Loading...';
+  }
+};
+
 var progress = new Progress(document.getElementById('progress'));
+
+var done = new Done(document.getElementById('done'));
 
 var source = new ol.source.TileJSON({
   url: 'https://api.tiles.mapbox.com/v3/mapbox.world-bright.json?secure',
@@ -103,4 +122,8 @@ var map = new ol.Map({
     center: [0, 0],
     zoom: 2
   })
+});
+
+map.on('postrender', function() {
+  done.update(map);
 });
