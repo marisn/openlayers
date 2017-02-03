@@ -668,7 +668,7 @@ ol.Map.prototype.hasFeatureAtPixel = function(pixel, opt_options) {
  * @api
  */
 ol.Map.prototype.hasAllTilesDone = function() {
-    return this.allTilesDone_;
+  return this.allTilesDone_;
 };
 
 /**
